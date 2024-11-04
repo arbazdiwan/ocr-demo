@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
@@ -15,7 +17,13 @@ export default function Home() {
       {/* Features Grid */}
       <div className="grid md:grid-cols-3 gap-8 mb-16">
         <div className="p-6 border rounded-lg hover:shadow-lg transition-shadow">
-          <img src="/file.svg" alt="Upload" className="w-12 h-12 mb-4" />
+          <Image
+            src="/file.svg"
+            alt="Upload"
+            width={48}
+            height={48}
+            className="mb-4"
+          />
           <h3 className="text-xl font-semibold mb-2">Quick Upload</h3>
           <p className="text-gray-600">
             Simply upload a photo of the PAN card and let our system do the work
@@ -23,7 +31,13 @@ export default function Home() {
         </div>
 
         <div className="p-6 border rounded-lg hover:shadow-lg transition-shadow">
-          <img src="/window.svg" alt="Extract" className="w-12 h-12 mb-4" />
+          <Image
+            src="/window.svg"
+            alt="Extract"
+            width={48}
+            height={48}
+            className="mb-4"
+          />
           <h3 className="text-xl font-semibold mb-2">Accurate Extraction</h3>
           <p className="text-gray-600">
             Automatically extracts PAN number, name, date of birth, and other
@@ -32,7 +46,13 @@ export default function Home() {
         </div>
 
         <div className="p-6 border rounded-lg hover:shadow-lg transition-shadow">
-          <img src="/globe.svg" alt="History" className="w-12 h-12 mb-4" />
+          <Image
+            src="/globe.svg"
+            alt="History"
+            width={48}
+            height={48}
+            className="mb-4"
+          />
           <h3 className="text-xl font-semibold mb-2">View History</h3>
           <p className="text-gray-600">
             Access your previously scanned PAN cards and their extracted

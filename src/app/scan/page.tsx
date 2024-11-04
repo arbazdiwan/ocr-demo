@@ -84,6 +84,7 @@ export default function ScanPage() {
             errorData.error || `HTTP error! status: ${response.status}`
           );
         } catch (e: unknown) {
+          console.log("error", e);
           throw new Error(`HTTP error! status: ${response.status}`);
         }
       }
