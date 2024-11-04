@@ -1,0 +1,10 @@
+service: dev-ocr-demo
+runtime: nodejs20
+env: standard
+
+env_variables:
+  APP_ENV: "dev"
+  PROJECT_ID: "ocr-dev-440305"
+  TZ: IST
+  NODE_OPTIONS: ""
+  NEXT_PUBLIC_OCR_BACKEND_URL: "https://dev-ocr-backend-service-dot-ocr-dev-440305.el.r.appspot.com"
