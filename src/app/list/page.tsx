@@ -44,6 +44,9 @@ export default function ListPage() {
   const [pollDelay, setPollDelay] = useState(5000);
   const [isPolling, setIsPolling] = useState(false);
 
+  const ocrBackendUrl = process.env.NEXT_PUBLIC_OCR_BACKEND_URL;
+  console.log("Backend URL:", ocrBackendUrl);
+
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
 
@@ -52,16 +55,25 @@ export default function ListPage() {
 
       setIsPolling(true);
       try {
-        const ocrBackendUrl = process.env.NEXT_PUBLIC_OCR_BACKEND_URL;
+        if (!ocrBackendUrl) {
+          throw new Error("Backend URL is not configured");
+        }
+
         const response = await fetch(`${ocrBackendUrl}/ocr/requests`, {
           cache: "no-store",
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
         setRequests(data.data);
 
         setPollDelay((prevDelay) => Math.min(prevDelay + 2000, 20000));
       } catch (error) {
-        console.error("Failed to fetch requests:", error);
+        console.error("Fetch error:", error);
+        // Handle error appropriately
       } finally {
         setIsPolling(false);
         timeoutId = setTimeout(fetchRequests, pollDelay);
@@ -75,7 +87,7 @@ export default function ListPage() {
         clearTimeout(timeoutId);
       }
     };
-  }, [isPolling, pollDelay]);
+  }, [isPolling, pollDelay, ocrBackendUrl]);
 
   return (
     <div className="container mx-auto px-4 py-8">
