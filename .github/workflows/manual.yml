@@ -11,7 +11,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    # env:
+    env:
+      NEXT_PUBLIC_OCR_BACKEND_URL: "https://dev-ocr-backend-service-dot-ocr-dev-440305.el.r.appspot.com"
     #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
     #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     #   AWS_REGION: ${{ secrets.AWS_REGION }}
