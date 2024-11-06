@@ -8,7 +8,7 @@ The application follows a modern Next.js 13+ architecture with App Router, lever
 
 ### Basic System Architecture Diagram
 
-![System Architecture Diagram](files://public/images/system-architecture.png)
+![System Architecture Diagram]([https://github.com/arbazdiwan/ocr-demo/blob/master/public/images/ocr-demo.drawio.png](https://github.com/arbazdiwan/ocr-demo/blob/master/public/images/ocr-demo.drawio.png))
 
 ### Sequencee Diagram
 
