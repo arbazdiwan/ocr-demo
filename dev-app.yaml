@@ -8,3 +8,11 @@ env_variables:
   TZ: IST
   NODE_OPTIONS: ""
   NEXT_PUBLIC_OCR_BACKEND_URL: "https://dev-ocr-backend-service-dot-ocr-dev-440305.el.r.appspot.com"
+
+handlers:
+  - url: /_next/static
+    static_dir: .next/static
+    expiration: "1d"
+
+  - url: /.*
+    script: auto

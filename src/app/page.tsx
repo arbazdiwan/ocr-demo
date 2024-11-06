@@ -1,6 +1,31 @@
+"use client";
+
+import { backoff } from "@/utils/backoff";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await backoff.execute(async () => {
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_OCR_BACKEND_URL}/ocr/requests`
+          );
+          if (!response.ok) {
+            throw new Error("Request failed");
+          }
+          // Only fetch data if you need it later
+          // const result = await response.json();
+        });
+      } catch (error) {
+        console.error("Failed to fetch data after multiple attempts:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       {/* Hero Section */}
